@@ -17,37 +17,37 @@ export default function MainStack() {
         <Tab.Navigator
             tabBarOptions={{
                 activeTintColor: '#000',
-                activeBackgroundColor: '#830583',
+                activeBackgroundColor: 'red',
                 inactiveTintColor: '#FFF',
-                inactiveBackgroundColor: '#D50BD5',
+                inactiveBackgroundColor: 'orange',
             }}
             screenOptions={({ route }) => ({
                 tabBarIcon: ({ focused, color, size }) => {
                     let iconName;
-                    if (route.name === 'Historia') {
+                    if (route.name === 'ListadoVehiculos') {
                         iconName = focused
                             ? 'open-book'
                             : 'book';
-                    } else if (route.name === 'Musicos') {
+                    } else if (route.name === 'CrearVehiculos') {
                         iconName = focused ? 'spotify' : 'spotify-with-circle';
                     }
 
                     return <Ionicons name={iconName} size={size} color={color} />;
                 },
-                tabBarActiveTintColor: 'white',
-                tabBarInactiveTintColor: 'black',
+                tabBarActiveTintColor: 'orange',
+                tabBarInactiveTintColor: 'red',
             })}
         >
             <Tab.Screen
-                name="Listado de Vehiculos"
+                name="ListadoVehiculos"
                 component={ListadoVehiculosScreen}
-                options={{ headerStyle: { backgroundColor: '#D50BD5' }, headerTitleAlign: 'center' }}
+                options={{ headerStyle: { backgroundColor: 'orange' }, headerTitleAlign: 'center' }}
 
             />
             <Tab.Screen
-                name="Crear Vehiculos"
+                name="CrearVehiculos"
                 component={CrearVehiculoScreen}
-                options={{ headerShown: false }}
+                options={{ headerStyle: { backgroundColor: 'orange' }, headerTitleAlign: 'center' }}
             />
         </Tab.Navigator>
 
