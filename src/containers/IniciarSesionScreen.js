@@ -86,7 +86,7 @@ export default function IniciarSesionScreen({ navigation }) {
       </View>
       <Button
         title="Iniciar Sesion"
-        onPress={() => Alert.alert('Ha iniciado sesion correctamente')}
+        onPress={() => navigation.navigate('Main')}
         color="orange"
       />
       <Text style={{ marginTop: 20 }}>¿No tienes cuenta?, <Text onPress={() => navigation.navigate('CrearCuenta')} style={{ color: "orange" }}>crea una aqui mismo.</Text></Text>
