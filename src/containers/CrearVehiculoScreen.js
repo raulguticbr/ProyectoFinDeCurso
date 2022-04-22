@@ -6,6 +6,7 @@ import Icons from 'react-native-vector-icons/Feather';
 import { setStatusBarBackgroundColor } from 'expo-status-bar';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Picker } from '@react-native-picker/picker';
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 
 
@@ -16,7 +17,7 @@ export default function CrearVehiculoScreen() {
   const [Modelo, setModelo] = React.useState();
   const [Descripcion, setDescripcion] = React.useState();
   const [Apodo, setApodo] = React.useState();
-  const [Año, setAño] = React.useState();
+  const [Año, setAño] = React.useState('');
   const [Matricula, setMatricula] = React.useState();
   return (
     <ScrollView>
@@ -93,10 +94,12 @@ export default function CrearVehiculoScreen() {
         </View>
 
         <View style={{
-          flexDirection: "row",
+          flexDirection: "column",
           flex: 1,
           justifyContent: 'center',
-          alignItems: 'center'
+          alignItems: 'left',
+
+
         }}>
 
           <TextInput
@@ -105,44 +108,48 @@ export default function CrearVehiculoScreen() {
             style={{
               height: 200,
               textAlignVertical: 'top',
-              borderColor: 'black', borderBottomWidth: 1, marginVertical: 10, width: 150,
-              height: 40
+              borderColor: 'black', borderBottomWidth: 1, marginVertical: 10, width: 300,
+              height: 90,
+              marginLeft: 20
             }}
             onChangeText={setDescripcion}
             value={Descripcion}
             placeholder="Descripcion"
 
           />
-          
-          <TextInput
+          {/* 
+          <DateTimePicker
             style={{
               borderColor: 'black', borderBottomWidth: 1, marginVertical: 10, width: 150,
-              height: 40
+              height: 40,
+              marginLeft:20
             }}
-            onChangeText={setModelo}
-            value={Modelo}
-            placeholder="Matricula "
+            value={Año}
+            onChangeText={setAño}
+            
+            
 
           />
+          */}
+
+
+
+          <Picker
+            selectedValue={Tipo}
+            onValueChange={(itemValue, itemIndex) =>
+              setTipo(itemValue)
+
+            }
+            style={{
+              width: 350,
+              height: 10
+            }}
+          >
+            <Picker.Item label="Coche" value="Coche" />
+            <Picker.Item label="Moto" value="Moto" />
+          </Picker>
+
         </View>
-
-
-
-        <Picker
-          selectedValue={Tipo}
-          onValueChange={(itemValue, itemIndex) =>
-            setTipo(itemValue)
-
-          }
-          style={{
-            width: 350,
-            height: 10
-          }}
-        >
-          <Picker.Item label="Coche" value="Coche" />
-          <Picker.Item label="Moto" value="Moto" />
-        </Picker>
-
       </View>
     </ScrollView>
 
