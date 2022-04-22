@@ -6,7 +6,7 @@ import Icons from 'react-native-vector-icons/Feather';
 import { setStatusBarBackgroundColor } from 'expo-status-bar';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ListadoVehiculosScreen from '../containers/ListadoVehiculosScreen';
-import CrearVehiculoScreen from '../containers/CrearVehiculoScreen';
+import CrearVehiculoStack from './CrearVehiculoStack';
 import Ionicons from 'react-native-vector-icons/Entypo';
 
 
@@ -46,7 +46,7 @@ export default function MainStack() {
             />
             <Tab.Screen
                 name="CrearVehiculos"
-                component={CrearVehiculoScreen}
+                component={CrearVehiculoStack}
                 options={{ headerStyle: { backgroundColor: 'orange' }, headerTitleAlign: 'center' }}
             />
         </Tab.Navigator>
