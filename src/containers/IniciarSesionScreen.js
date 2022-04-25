@@ -11,7 +11,7 @@ export default function IniciarSesionScreen({ navigation }) {
   const [passwordLogIn, onChangePasswordLogIn] = React.useState("");
   return (
 
-    <View style={{
+    <SafeAreaView  style={{
       flex: 1,
       flexDirection: "colum",
       justifyContent: 'center',
@@ -91,7 +91,7 @@ export default function IniciarSesionScreen({ navigation }) {
       />
       <Text style={{ marginTop: 20 }}>¿No tienes cuenta?, <Text onPress={() => navigation.navigate('CrearCuenta')} style={{ color: "orange" }}>crea una aqui mismo.</Text></Text>
 
-    </View>
+    </SafeAreaView >
 
 
 
