@@ -7,7 +7,7 @@ import { setStatusBarBackgroundColor } from 'expo-status-bar';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import ListadoVehiculosScreen from '../containers/ListadoVehiculosScreen';
 import CrearVehiculoStack from './CrearVehiculoStack';
-import Ionicons from 'react-native-vector-icons/Entypo';
+import Ionicons from 'react-native-vector-icons/AntDesign';
 
 
 export default function MainStack() {
@@ -26,10 +26,10 @@ export default function MainStack() {
                     let iconName;
                     if (route.name === 'ListadoVehiculos') {
                         iconName = focused
-                            ? 'open-book'
-                            : 'book';
+                            ? 'tool'
+                            : 'car';
                     } else if (route.name === 'CrearVehiculos') {
-                        iconName = focused ? 'spotify' : 'spotify-with-circle';
+                        iconName = focused ? 'database' : 'idcard';
                     }
 
                     return <Ionicons name={iconName} size={size} color={color} />;
