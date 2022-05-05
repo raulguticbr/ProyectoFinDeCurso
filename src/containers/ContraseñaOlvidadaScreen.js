@@ -11,7 +11,7 @@ export default function ContraseñaOlvidadaScreen({ navigation }) {
   const [passwordLogIn, onChangePasswordLogIn] = React.useState("");
   return (
 
-    <View style={{
+    <SafeAreaView  style={{
       flex: 1,
       flexDirection: "colum",
       justifyContent: 'center',
@@ -53,7 +53,7 @@ export default function ContraseñaOlvidadaScreen({ navigation }) {
       />
       <Text style={{ marginTop: 20 }}>¿Has cambiado de opinion?, <Text onPress={() => navigation.navigate('IniciarSesion')} style={{ color: "orange" }}>Inicia sesion.</Text></Text>
 
-    </View>
+    </SafeAreaView >
 
 
 

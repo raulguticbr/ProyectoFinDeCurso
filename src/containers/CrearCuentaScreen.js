@@ -14,7 +14,7 @@ export default function CrearCuentaScreen({ navigation }) {
     const [conPassRegistro, onChangeConPassRegistro] = React.useState("");
     return (
 
-        <View style={{
+        <SafeAreaView  style={{
             flex: 1,
             flexDirection: "colum",
             justifyContent: 'center',
@@ -126,7 +126,7 @@ export default function CrearCuentaScreen({ navigation }) {
             />
             <Text style={{ marginTop: 20 }}>¿Ya tienes cuenta?, <Text onPress={() => navigation.navigate('IniciarSesion')} style={{ color: "orange" }}>Inicia sesion.</Text></Text>
 
-        </View>
+        </SafeAreaView >
 
 
 

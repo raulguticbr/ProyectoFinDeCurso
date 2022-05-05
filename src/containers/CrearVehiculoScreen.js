@@ -6,7 +6,7 @@ import Icons from 'react-native-vector-icons/Feather';
 import { setStatusBarBackgroundColor } from 'expo-status-bar';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Picker } from '@react-native-picker/picker';
-import DateTimePicker from '@react-native-community/datetimepicker';
+import * as ImagePicker from 'expo-image-picker';
 
 
 
@@ -19,10 +19,25 @@ export default function CrearVehiculoScreen() {
   const [Apodo, setApodo] = React.useState();
   const [Año, setAño] = React.useState('');
   const [Matricula, setMatricula] = React.useState();
+  const [image,setImage]=React.useState('https://via.placeholder.com/200');
+  const selectImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.cancelled) {
+      setImage(result.uri);
+    }
+  };
   return (
     <ScrollView>
 
-      <View style={{
+      <SafeAreaView style={{
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
@@ -117,24 +132,29 @@ export default function CrearVehiculoScreen() {
             placeholder="Descripcion"
 
           />
-          {/* 
-          <DateTimePicker
+          <TextInput
             style={{
               borderColor: 'black', borderBottomWidth: 1, marginVertical: 10, width: 150,
-              height: 40,
-              marginLeft:20
+              height: 40, marginLeft: 20
             }}
-            value={Año}
             onChangeText={setAño}
-            
-            
+            value={Año}
+            placeholder="Fecha('2030/4/22')"
 
           />
-          */}
 
 
 
-          <Picker
+          
+          <View style={{flexDirection:"row",marginLeft:10}}>
+            <Button
+              title="Seleccionar imagen"
+              onPress={() => selectImage()}
+              color="orange"
+              style={{marginLeft:20}}
+            />
+            </View>
+            <Picker
             selectedValue={Tipo}
             onValueChange={(itemValue, itemIndex) =>
               setTipo(itemValue)
@@ -149,8 +169,22 @@ export default function CrearVehiculoScreen() {
             <Picker.Item label="Moto" value="Moto" />
           </Picker>
 
+            <View style={{flexDirection:"row",marginLeft:10,marginTop:150}}>
+            <Button
+              title="Crear Vehiculo"
+              onPress={() => Alert.alert("vehiculo creado")}
+              color="orange"
+              style={{marginLeft:20}}
+            />
+            </View>
+            
+
+
+
+          
+
         </View>
-      </View>
+      </SafeAreaView >
     </ScrollView>
 
   );
