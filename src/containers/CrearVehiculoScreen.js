@@ -103,7 +103,7 @@ export default function CrearVehiculoScreen() {
             }}
             onChangeText={setMatricula}
             value={Matricula}
-            placeholder="Matricula "
+            placeholder="Matricula"
 
           />
         </View>
