@@ -51,7 +51,11 @@ export default function ContraseñaOlvidadaScreen({ navigation }) {
         onPress={() => Alert.alert('Contraseña enviada, revise su direccion de correo.')}
         color="orange"
       />
-      <Text style={{ marginTop: 20 }}>¿Has cambiado de opinion?, <Text onPress={() => navigation.navigate('IniciarSesion')} style={{ color: "orange" }}>Inicia sesion.</Text></Text>
+      <Text style={{ marginTop: 20 }}>
+        ¿Has cambiado de opinion?, 
+        <Text onPress={() => navigation.navigate('IniciarSesion')} style={{ color: "orange" }}>Inicia sesion.
+        </Text>
+        </Text>
 
     </SafeAreaView >
 

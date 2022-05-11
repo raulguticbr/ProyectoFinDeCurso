@@ -89,7 +89,11 @@ export default function IniciarSesionScreen({ navigation }) {
         onPress={() => navigation.navigate('Main')}
         color="orange"
       />
-      <Text style={{ marginTop: 20 }}>¿No tienes cuenta?, <Text onPress={() => navigation.navigate('CrearCuenta')} style={{ color: "orange" }}>crea una aqui mismo.</Text></Text>
+      <Text style={{ marginTop: 20 }}>
+        ¿No tienes cuenta?, 
+        <Text onPress={() => navigation.navigate('CrearCuenta')} style={{ color: "orange" }}>crea una aqui mismo.
+        </Text>
+        </Text>
 
     </SafeAreaView >
 
