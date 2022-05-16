@@ -10,8 +10,8 @@ export default function CrearCuentaScreen({ navigation }) {
     const [emailRegistro, onChangeEmailRegistro] = React.useState("");
     const [nombreRegistro, onChangeNombreRegistro] = React.useState("");
     const [passwordRegistro, onChangePasswordRegistro] = React.useState("");
-    const [telefonmoRegistro, onChangeTelefonoRegistro] = React.useState("");
-    const [conPassRegistro, onChangeConPassRegistro] = React.useState("");
+    const [ApellidosRegistro, onChangeApellidosRegistro] = React.useState("");
+    const [NickRegistro, onChangeNickRegistro] = React.useState("");
     return (
 
         <SafeAreaView style={{
@@ -50,6 +50,24 @@ export default function CrearCuentaScreen({ navigation }) {
             <View syle={{
                 marginBottom: 20
             }}>
+                <Text style={{ marginBottom: 5 }}>APELLIDOS:</Text>
+                <TextInput
+                    style={{
+                        height: 40,
+                        width: 200,
+                        marginBottom: 5,
+                        borderWidth: 3,
+                        borderColor: "orange",
+                        borderRadius: 10,
+                        padding: 10,
+                    }}
+                    onChangeText={onChangeApellidosRegistro}
+                    value={ApellidosRegistro}
+                />
+            </View>
+            <View syle={{
+                marginBottom: 20
+            }}>
                 <Text style={{ marginBottom: 5 }}>EMAIL:</Text>
                 <TextInput
                     style={{
@@ -63,24 +81,6 @@ export default function CrearCuentaScreen({ navigation }) {
                     }}
                     onChangeText={onChangeEmailRegistro}
                     value={emailRegistro}
-                />
-            </View>
-            <View syle={{
-                marginBottom: 20
-            }}>
-                <Text style={{ marginBottom: 5 }}>TELEFONO:</Text>
-                <TextInput
-                    style={{
-                        height: 40,
-                        width: 200,
-                        marginBottom: 5,
-                        borderWidth: 3,
-                        borderColor: "orange",
-                        borderRadius: 10,
-                        padding: 10,
-                    }}
-                    onChangeText={onChangeTelefonoRegistro}
-                    value={telefonmoRegistro}
                 />
             </View>
             <View syle={{
@@ -104,7 +104,7 @@ export default function CrearCuentaScreen({ navigation }) {
             <View syle={{
                 marginBottom: 20
             }}>
-                <Text style={{ marginBottom: 5 }}>CONFIRMA CONTRASEÑA:</Text>
+                <Text style={{ marginBottom: 5 }}>CONFIRMA NICK:</Text>
                 <TextInput
                     style={{
                         height: 40,
@@ -115,13 +115,13 @@ export default function CrearCuentaScreen({ navigation }) {
                         borderRadius: 10,
                         padding: 10,
                     }}
-                    onChangeText={onChangeConPassRegistro}
-                    value={conPassRegistro}
+                    onChangeText={onChangeNickRegistro}
+                    value={NickRegistro}
                 />
             </View>
             <Button
                 title="Crear Cuenta"
-                onPress={() => Alert.alert('Cuenta creada correctamente')}
+                onPress={() => CreacionUsuario()}
                 color="orange"
             />
             <Text style={{ marginTop: 20 }}>¿Ya tienes cuenta?,
@@ -136,5 +136,29 @@ export default function CrearCuentaScreen({ navigation }) {
 
     );/* return */
 
+    function CreacionUsuario() {
+        return (
+            fetch('localhost:8080/Usuarios', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    "nombre": nombreRegistro,
+                    "apellidos": ApellidosRegistro,
+                    "correo": emailRegistro,
+                    "nick": NickRegistro,
+                    "contrasena": passwordRegistro
 
+                }),
+
+            })
+                .then((responseJson) => {
+                    console.log('getting data from fetch', responseJson);
+                    Alert.alert("Usuario Creado Correctamente");
+                })
+                .catch(error => console.log(error))
+        );
+    }
 }/* app */
+

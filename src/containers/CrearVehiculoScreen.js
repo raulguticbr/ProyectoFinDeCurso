@@ -186,4 +186,7 @@ export default function CrearVehiculoScreen() {
     </ScrollView>
 
   );
+
+
 } //LISTADO STACK
+

@@ -1,6 +1,6 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Text, View, SafeAreaView, FlatList, RefreshControl, Image, TextInput, Button, ScrollView, Alert,TouchableOpacity } from 'react-native';
+import { Text, View, SafeAreaView, FlatList, RefreshControl, Image, TextInput, Button, ScrollView, Alert, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import Icons from 'react-native-vector-icons/Feather';
 import { setStatusBarBackgroundColor } from 'expo-status-bar';
@@ -11,7 +11,7 @@ export default function IniciarSesionScreen({ navigation }) {
   const [passwordLogIn, onChangePasswordLogIn] = React.useState("");
   return (
 
-    <SafeAreaView  style={{
+    <SafeAreaView style={{
       flex: 1,
       flexDirection: "colum",
       justifyContent: 'center',
@@ -90,10 +90,10 @@ export default function IniciarSesionScreen({ navigation }) {
         color="orange"
       />
       <Text style={{ marginTop: 20 }}>
-        ¿No tienes cuenta?, 
+        ¿No tienes cuenta?,
         <Text onPress={() => navigation.navigate('CrearCuenta')} style={{ color: "orange" }}>crea una aqui mismo.
         </Text>
-        </Text>
+      </Text>
 
     </SafeAreaView >
 
@@ -102,5 +102,7 @@ export default function IniciarSesionScreen({ navigation }) {
 
   );/* return */
 
+  
 
 }/* app */
+
