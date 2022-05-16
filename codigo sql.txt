@@ -1,0 +1,9 @@
+create table usuarios(
+	id_usuario int primary key,
+	nombre varchar(250),
+	apellidos varchar (250),
+	correo varchar(250),
+	nick varchar(250),
+	contraseña varchar(250)
+
+)
