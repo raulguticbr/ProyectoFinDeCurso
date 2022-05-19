@@ -9,7 +9,14 @@ const Tab = createBottomTabNavigator();
 export default function IniciarSesionScreen({ navigation }) {
   const [emailLogIn, onChangeEmailLogIn] = React.useState("");
   const [passwordLogIn, onChangePasswordLogIn] = React.useState("");
-  const [usuariosBox, setUsuariosBox] = React.useState(data);
+  /* const obtenerUsuarios =()=>{
+    let url='http://127.0.0.1:8000/Usuarios';
+    fetch(url)
+    .then(response=>response.json())
+    .then((responseJson)=>{
+      setUsuariosBox(responseJson)
+    })
+  } */
   const data = [
     {
       id_usuario: 1,
@@ -36,15 +43,10 @@ export default function IniciarSesionScreen({ navigation }) {
       contraseña: "raat",
     },
   ];
+  const [usuariosBox, setUsuariosBox] = React.useState(data);
+  
 
-  const obtenerUsuarios =()=>{
-    let url='http://127.0.0.1:8000/Usuarios';
-    fetch(url)
-    .then(response=>response.json())
-    .then((responseJson)=>{
-      setUsuariosBox(responseJson)
-    })
-  }
+  
 
   return (
 
@@ -139,7 +141,6 @@ export default function IniciarSesionScreen({ navigation }) {
 
   function inicioSesion() {
     for (var i = 0; i < usuariosBox.length; i++) {
-      console.log(usuariosBox[i].nombre)
       if (emailLogIn == usuariosBox[i].correo) {
         if (passwordLogIn == usuariosBox[i].contraseña) {
           navigation.navigate('Main');
