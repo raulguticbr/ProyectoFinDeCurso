@@ -28,9 +28,7 @@ export default function ListadoVehiculosScreen() {
         marginHorizontal: 25
       }}>
 
-        <View style={{
-          flexDirection: 'column', marginVertical: 20, flex: 1,
-          flexDirection: "colum",
+        <View style={{ marginVertical: 20, flex: 1,
           justifyContent: 'center',
           alignItems: 'center'
         }}>

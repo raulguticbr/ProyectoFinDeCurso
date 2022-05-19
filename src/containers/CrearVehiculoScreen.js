@@ -107,10 +107,8 @@ export default function CrearVehiculoScreen() {
         </View>
 
         <View style={{
-          flexDirection: "column",
           flex: 1,
-          justifyContent: 'center',
-          alignItems: 'left',
+          justifyContent: 'center'
 
 
         }}>

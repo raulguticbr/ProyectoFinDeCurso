@@ -7,3 +7,14 @@ create table usuarios(
 	contraseña varchar(250)
 
 )
+
+
+create table Vehiculos(
+id_vehiculo int primary key AUTO_INCREMENT,
+    marca varchar(250),
+    modelo varchar(250),
+    apodo varchar(250),
+    matricula varchar(250),
+    descripcion varchar (1000),
+  	tipo varchar(250)
+);

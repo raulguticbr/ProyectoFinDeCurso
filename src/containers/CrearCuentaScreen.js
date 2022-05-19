@@ -12,17 +12,41 @@ export default function CrearCuentaScreen({ navigation }) {
     const [passwordRegistro, onChangePasswordRegistro] = React.useState("");
     const [ApellidosRegistro, onChangeApellidosRegistro] = React.useState("");
     const [NickRegistro, onChangeNickRegistro] = React.useState("");
+    const onPress1=()=> {
+        return (
+           
+            fetch('http://127.0.0.1:8000/Vehiculosapi', console.log('muertos de react'), {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    "nombre": nombreRegistro,
+                    "apellidos": ApellidosRegistro,
+                    "correo": emailRegistro,
+                    "nick": NickRegistro,
+                    "contrasena": passwordRegistro
+
+                }),
+
+            })
+                .then((responseJson) => {
+                    console.log('getting data from fetch', responseJson);
+                    Alert.alert("Usuario Creado Correctamente");
+                })
+                .catch(error => console.log(error))
+        );
+    }
     return (
 
         <SafeAreaView style={{
             flex: 1,
-            flexDirection: "colum",
             justifyContent: 'center',
             alignItems: 'center'
         }}>
 
             <Text style={{
-                fontFamily: "Cochin",
                 fontSize: 40,
                 fontWeight: "bold",
                 marginBottom: 40
@@ -121,7 +145,7 @@ export default function CrearCuentaScreen({ navigation }) {
             </View>
             <Button
                 title="Crear Cuenta"
-                onPress={() => CreacionUsuario()}
+                onPress={() => onPress1()}
                 color="orange"
             />
             <Text style={{ marginTop: 20 }}>¿Ya tienes cuenta?,
@@ -136,29 +160,6 @@ export default function CrearCuentaScreen({ navigation }) {
 
     );/* return */
 
-    function CreacionUsuario() {
-        return (
-            fetch('localhost:8080/Usuarios', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    "nombre": nombreRegistro,
-                    "apellidos": ApellidosRegistro,
-                    "correo": emailRegistro,
-                    "nick": NickRegistro,
-                    "contrasena": passwordRegistro
-
-                }),
-
-            })
-                .then((responseJson) => {
-                    console.log('getting data from fetch', responseJson);
-                    Alert.alert("Usuario Creado Correctamente");
-                })
-                .catch(error => console.log(error))
-        );
-    }
+    
 }/* app */
 

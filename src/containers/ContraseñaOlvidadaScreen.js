@@ -13,13 +13,11 @@ export default function ContraseñaOlvidadaScreen({ navigation }) {
 
     <SafeAreaView  style={{
       flex: 1,
-      flexDirection: "colum",
       justifyContent: 'center',
       alignItems: 'center'
     }}>
 
       <Text style={{
-        fontFamily: "Cochin",
         fontSize: 40,
         fontWeight: "bold",
         marginBottom: 10

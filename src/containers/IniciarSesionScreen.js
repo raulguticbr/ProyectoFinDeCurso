@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Text, View, SafeAreaView, FlatList, RefreshControl, Image, TextInput, Button, ScrollView, Alert, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
@@ -9,11 +9,47 @@ const Tab = createBottomTabNavigator();
 export default function IniciarSesionScreen({ navigation }) {
   const [emailLogIn, onChangeEmailLogIn] = React.useState("");
   const [passwordLogIn, onChangePasswordLogIn] = React.useState("");
+  const [usuariosBox, setUsuariosBox] = React.useState(data);
+  const data = [
+    {
+      id_usuario: 1,
+      nombre: "root",
+      apellidos: "root",
+      correo: "root",
+      nick: "root",
+      contraseña: "root",
+    },
+    {
+      id_vehiculo: 2,
+      nombre: "ruut",
+      apellidos: "ruut",
+      correo: "ruut",
+      nick: "ruut",
+      contraseña: "ruut",
+    },
+    {
+      id_vehiculo: 3,
+      nombre: "raat",
+      apellidos: "raat",
+      correo: "raat",
+      nick: "raat",
+      contraseña: "raat",
+    },
+  ];
+
+  const obtenerUsuarios =()=>{
+    let url='http://127.0.0.1:8000/Usuarios';
+    fetch(url)
+    .then(response=>response.json())
+    .then((responseJson)=>{
+      setUsuariosBox(responseJson)
+    })
+  }
+
   return (
 
     <SafeAreaView style={{
       flex: 1,
-      flexDirection: "colum",
       justifyContent: 'center',
       alignItems: 'center'
     }}>
@@ -27,7 +63,6 @@ export default function IniciarSesionScreen({ navigation }) {
         source={require('../../assets/fotoPortada.jpg')}
       />
       <Text style={{
-        fontFamily: "Cochin",
         fontSize: 40,
         fontWeight: "bold",
         marginBottom: 40
@@ -86,7 +121,7 @@ export default function IniciarSesionScreen({ navigation }) {
       </View>
       <Button
         title="Iniciar Sesion"
-        onPress={() => navigation.navigate('Main')}
+        onPress={() => inicioSesion()}
         color="orange"
       />
       <Text style={{ marginTop: 20 }}>
@@ -99,10 +134,26 @@ export default function IniciarSesionScreen({ navigation }) {
 
 
 
-
   );/* return */
 
-  
+
+  function inicioSesion() {
+    for (var i = 0; i < usuariosBox.length; i++) {
+      console.log(usuariosBox[i].nombre)
+      if (emailLogIn == usuariosBox[i].correo) {
+        if (passwordLogIn == usuariosBox[i].contraseña) {
+          navigation.navigate('Main');
+        }
+        else {
+          Alert.alert('Los datos introducidos no son coincidentes');
+        }
+      }
+    }
+  }
+
 
 }/* app */
+
+
+
 
