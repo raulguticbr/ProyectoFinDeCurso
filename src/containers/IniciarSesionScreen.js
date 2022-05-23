@@ -7,16 +7,16 @@ import { setStatusBarBackgroundColor } from 'expo-status-bar';
 
 const Tab = createBottomTabNavigator();
 export default function IniciarSesionScreen({ navigation }) {
-  const [emailLogIn, onChangeEmailLogIn] = React.useState("");
-  const [passwordLogIn, onChangePasswordLogIn] = React.useState("");
-  /* const obtenerUsuarios =()=>{
-    let url='http://127.0.0.1:8000/Usuarios';
+  const [emailLogIn, onChangeEmailLogIn] = React.useState(null);
+  const [passwordLogIn, onChangePasswordLogIn] = React.useState(null);
+  const obtenerVehiculos =()=>{
+    let url='http://127.0.0.1:8000/VehiculosApi';
     fetch(url)
     .then(response=>response.json())
     .then((responseJson)=>{
-      setUsuariosBox(responseJson)
+      setDatos(responseJson)
     })
-  } */
+  }
   const data = [
     {
       id_usuario: 1,
@@ -44,9 +44,9 @@ export default function IniciarSesionScreen({ navigation }) {
     },
   ];
   const [usuariosBox, setUsuariosBox] = React.useState(data);
-  
 
-  
+
+
 
   return (
 
@@ -140,16 +140,36 @@ export default function IniciarSesionScreen({ navigation }) {
 
 
   function inicioSesion() {
-    for (var i = 0; i < usuariosBox.length; i++) {
-      if (emailLogIn == usuariosBox[i].correo) {
-        if (passwordLogIn == usuariosBox[i].contraseña) {
-          navigation.navigate('Main');
+    var bandera = false;
+    if (emailLogIn == null || passwordLogIn == null) {
+      Alert.alert('rellena todos los campos')
+    } else {
+      for (var i = 0; i < usuariosBox.length; i++) {
+
+        if (emailLogIn == usuariosBox[i].correo) {
+          if (passwordLogIn == usuariosBox[i].contraseña) {
+            bandera = true;
+            navigation.navigate('Main');
+            break;
+          }
+          else {
+            bandera=false;
+
+          }
+        } else {
+          bandera=false;
         }
-        else {
-          Alert.alert('Los datos introducidos no son coincidentes');
-        }
+
       }
+     
     }
+    if (bandera === false) {
+      Alert.alert('Los datos introducidos no son coincidentes');
+      bandera = 0;
+    } else {
+      Alert.alert('Sesion iniciada correctamente');
+    }
+
   }
 
 

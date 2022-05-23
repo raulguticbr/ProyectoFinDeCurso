@@ -15,7 +15,7 @@ export default function CrearCuentaScreen({ navigation }) {
     const onPress1=()=> {
         return (
            
-            fetch('http://127.0.0.1:8000/Vehiculosapi', console.log('muertos de react'), {
+            fetch('http://127.0.0.1:8000/Usuarios', {
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',
