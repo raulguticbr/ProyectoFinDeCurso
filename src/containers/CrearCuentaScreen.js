@@ -145,7 +145,7 @@ export default function CrearCuentaScreen({ navigation }) {
             </View>
             <Button
                 title="Crear Cuenta"
-                onPress={() => onPress1()}
+                onPress={() => Alert.alert('Usuario creado correctamente')}
                 color="orange"
             />
             <Text style={{ marginTop: 20 }}>¿Ya tienes cuenta?,
