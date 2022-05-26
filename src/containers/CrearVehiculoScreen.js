@@ -19,7 +19,7 @@ export default function CrearVehiculoScreen() {
   const [Apodo, setApodo] = React.useState();
   const [Año, setAño] = React.useState('');
   const [Matricula, setMatricula] = React.useState();
-  const [image,setImage]=React.useState('https://via.placeholder.com/200');
+  const [image, setImage] = React.useState('https://via.placeholder.com/200');
   const selectImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -32,6 +32,33 @@ export default function CrearVehiculoScreen() {
       setImage(result.uri);
     }
   };
+  const CrearVehiculo = () => {
+    return (
+
+      fetch('http://127.0.0.1:8000/Usuarios', {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          "nombre": nombreRegistro,
+          "apellidos": ApellidosRegistro,
+          "correo": emailRegistro,
+          "nick": NickRegistro,
+          "contrasena": passwordRegistro
+
+        }),
+
+      })
+        .then((responseJson) => {
+          console.log('getting data from fetch', responseJson);
+          Alert.alert("Usuario Creado Correctamente");
+        })
+        .catch(error => console.log(error))
+    );
+  }
+  /* Esta llamada como las otras del tipo get no las he podido comprobar porque en mi caso particular no podia conectar el emulador con mi api en local, pero la api si que funciona bien. */
   return (
     <ScrollView>
 
@@ -141,16 +168,16 @@ export default function CrearVehiculoScreen() {
 
 
 
-          
-          <View style={{flexDirection:"row",marginLeft:10}}>
+
+          <View style={{ flexDirection: "row", marginLeft: 10 }}>
             <Button
               title="Seleccionar imagen"
               onPress={() => selectImage()}
               color="orange"
-              style={{marginLeft:20}}
+              style={{ marginLeft: 20 }}
             />
-            </View>
-            <Picker
+          </View>
+          <Picker
             selectedValue={Tipo}
             onValueChange={(itemValue, itemIndex) =>
               setTipo(itemValue)
@@ -165,19 +192,19 @@ export default function CrearVehiculoScreen() {
             <Picker.Item label="Moto" value="Moto" />
           </Picker>
 
-            <View style={{flexDirection:"row",marginLeft:10,marginTop:150}}>
+          <View style={{ flexDirection: "row", marginLeft: 10, marginTop: 150 }}>
             <Button
               title="Crear Vehiculo"
-              onPress={() => Alert.alert("vehiculo creado")}
+              onPress={() => CrearVehiculo()}
               color="orange"
-              style={{marginLeft:20}}
+              style={{ marginLeft: 20 }}
             />
-            </View>
-            
+          </View>
 
 
 
-          
+
+
 
         </View>
       </SafeAreaView >

@@ -56,6 +56,7 @@ export default function ContraseñaOlvidadaScreen({ navigation }) {
       <Button
         title="Enviar"
         onPress={() => Alert.alert('Contraseña enviada, revise su direccion de correo.')}
+        /* Esta funcionalidad esta falseada debido a que es una mejora de futuro. */
         color="orange"
       />
       <Text style={{ marginTop: 20 }}>

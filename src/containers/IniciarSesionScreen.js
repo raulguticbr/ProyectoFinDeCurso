@@ -9,15 +9,15 @@ const Tab = createBottomTabNavigator();
 export default function IniciarSesionScreen({ navigation }) {
   const [emailLogIn, onChangeEmailLogIn] = React.useState(null);
   const [passwordLogIn, onChangePasswordLogIn] = React.useState(null);
-  const obtenerVehiculos =()=>{
-    let url='http://127.0.0.1:8000/VehiculosApi';
+  const obtenerUsuarios =()=>{
+    let url='http://127.0.0.1:8000/Usuarios';
     fetch(url)
     .then(response=>response.json())
     .then((responseJson)=>{
       setDatos(responseJson)
     })
   }
-  const data = [
+  /* const data = [
     {
       id_usuario: 1,
       nombre: "root",
@@ -42,8 +42,10 @@ export default function IniciarSesionScreen({ navigation }) {
       nick: "raat",
       contraseña: "raat",
     },
-  ];
-  const [usuariosBox, setUsuariosBox] = React.useState(data);
+  ]; 
+    Este jSON es porque las llamadas a la api no me funcionan desde el emulador, desde el postman si pero desde el emulador no he podido hacer que obtenga la informacion, por lo que la variable de abajo en vez de poner por defecto ObtenerUsuarios se pone data y ya funciona para hacer las pruebas.
+  */
+  const [usuariosBox, setUsuariosBox] = React.useState(obtenerUsuarios);
 
 
 

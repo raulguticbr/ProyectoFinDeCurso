@@ -12,7 +12,7 @@ export default function CrearCuentaScreen({ navigation }) {
     const [passwordRegistro, onChangePasswordRegistro] = React.useState("");
     const [ApellidosRegistro, onChangeApellidosRegistro] = React.useState("");
     const [NickRegistro, onChangeNickRegistro] = React.useState("");
-    const onPress1=()=> {
+    const CrearUsuario=()=> {
         return (
            
             fetch('http://127.0.0.1:8000/Usuarios', {
@@ -38,6 +38,7 @@ export default function CrearCuentaScreen({ navigation }) {
                 .catch(error => console.log(error))
         );
     }
+    /* Esta llamada como las otras del tipo get no las he podido comprobar porque en mi caso particular no podia conectar el emulador con mi api en local, pero la api si que funciona bien. */
     return (
 
         <SafeAreaView style={{
@@ -145,7 +146,7 @@ export default function CrearCuentaScreen({ navigation }) {
             </View>
             <Button
                 title="Crear Cuenta"
-                onPress={() => Alert.alert('Usuario creado correctamente')}
+                onPress={() => CrearUsuario()}
                 color="orange"
             />
             <Text style={{ marginTop: 20 }}>¿Ya tienes cuenta?,

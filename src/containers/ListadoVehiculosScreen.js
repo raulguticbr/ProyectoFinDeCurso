@@ -10,7 +10,16 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const Stack = createNativeStackNavigator();
 export default function ListadoVehiculosScreen() {
-  const datos = [
+  const obtenerVehiculos =()=>{
+    let url='http://127.0.0.1:8000/VehiculosApi';
+    fetch(url)
+    .then(response=>response.json())
+    .then((responseJson)=>{
+      setDatos(responseJson)
+    })
+  }
+  
+/*   datos = [
     { id: 1, marca: 'Citroen', modelo: 'c4', apodo: 'c4trin', matricula: '0105GPC', descripcion: 'Este es mi primer coche, al que mas cariño le tengo', fecha: '2020/09/24', tipo: 'Coche' },
     { id: 2, marca: 'Citroen', modelo: 'c4', apodo: 'c4trin', matricula: '0105GPC', descripcion: 'Este es mi primer coche, al que mas cariño le tengo', fecha: '2020/09/24', tipo: 'Coche' },
     { id: 3, marca: 'Citroen', modelo: 'c4', apodo: 'c4trin', matricula: '0105GPC', descripcion: 'Este es mi primer coche, al que mas cariño le tengo', fecha: '2020/09/24', tipo: 'Coche' },
@@ -18,7 +27,11 @@ export default function ListadoVehiculosScreen() {
     { id: 5, marca: 'Citroen', modelo: 'c4', apodo: 'c4trin', matricula: '0105GPC', descripcion: 'Este es mi primer coche, al que mas cariño le tengo', fecha: '2020/09/24', tipo: 'Coche' },
     { id: 6, marca: 'Citroen', modelo: 'c4', apodo: 'c4trin', matricula: '0105GPC', descripcion: 'Este es mi primer coche, al que mas cariño le tengo', fecha: '2020/09/24', tipo: 'Coche' },
     { id: 7, marca: 'Citroen', modelo: 'c4', apodo: 'c4trin', matricula: '0105GPC', descripcion: 'Este es mi primer coche, al que mas cariño le tengo', fecha: '2020/09/24', tipo: 'Coche' },
-  ];
+  ]; 
+   Este jSON es porque las llamadas a la api no me funcionan desde el emulador, desde el postman si pero desde el emulador no he podido hacer que obtenga la informacion, por lo que la variable de abajo en vez de poner por defecto Obtenervehiculos se pone datos y ya funciona para hacer las pruebas.
+  */
+  
+  const [datos, setDatos] = React.useState(obtenerVehiculos);
 
   function renderItem({ item }) {
     return (
